@@ -27,5 +27,11 @@ namespace API.Controllers
         {
             return Ok(await Mediator.Send(new CreateActivity.Command() { Activity = activity }));
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateActivity ([FromBody]Activity activity)
+        {
+            return Ok(await Mediator.Send(new UpdateActivity.Command() { Activity=activity  }));
+        }
     }
 }
