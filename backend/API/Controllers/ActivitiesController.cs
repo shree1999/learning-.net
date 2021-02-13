@@ -21,5 +21,11 @@ namespace API.Controllers
         {
             return await Mediator.Send(new SingleActivity.Query() {Id = id});
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateActivity ([FromBody]Activity activity)
+        {
+            return Ok(await Mediator.Send(new CreateActivity.Command() { Activity = activity }));
+        }
     }
 }
