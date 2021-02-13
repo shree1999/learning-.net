@@ -16,5 +16,10 @@ namespace API.Controllers
             return await Mediator.Send(new ListActivities.Query());
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Activity>> GetSingleActivity (Guid id)
+        {
+            return await Mediator.Send(new SingleActivity.Query() {Id = id});
+        }
     }
 }
