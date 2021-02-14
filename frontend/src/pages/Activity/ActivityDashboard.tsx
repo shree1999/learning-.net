@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Grid, Header, Segment } from 'semantic-ui-react';
+import { Container, Grid, Header } from 'semantic-ui-react';
 
 import { ActivityInterface } from '../../interfaces';
 import { ActivityList } from '../../components/ActivityList';
