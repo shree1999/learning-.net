@@ -1,7 +1,11 @@
 import React from 'react';
 import { Button, Container, Menu } from 'semantic-ui-react';
 
-export const Header: React.FC = () => {
+interface Props {
+    showForm: () => void;
+}
+
+export const Header: React.FC<Props> = ({ showForm }) => {
     return (
         <Menu>
             <Container>
@@ -10,7 +14,11 @@ export const Header: React.FC = () => {
                 </Menu.Item>
                 <Menu.Item name="Activities" />
                 <Menu.Item>
-                    <Button positive content="Create Activity" />
+                    <Button
+                        positive
+                        content="Create Activity"
+                        onClick={() => showForm()}
+                    />
                 </Menu.Item>
             </Container>
         </Menu>

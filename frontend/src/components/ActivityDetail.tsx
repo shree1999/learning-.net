@@ -5,13 +5,14 @@ import { ActivityInterface } from '../interfaces';
 
 interface Props {
     activity: ActivityInterface | undefined;
+    openForm: (id?: string) => void;
 }
 
-export const ActivityDetail: React.FC<Props> = ({ activity }) => {
+export const ActivityDetail: React.FC<Props> = ({ activity, openForm }) => {
     return (
         <Fragment>
             {activity && (
-                <Card>
+                <Card fluid>
                     <Image
                         src="/images/avatar/large/matthew.png"
                         wrapped
@@ -27,7 +28,11 @@ export const ActivityDetail: React.FC<Props> = ({ activity }) => {
                         </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                        <Button content="Edit" primary />
+                        <Button
+                            content="Edit"
+                            primary
+                            onClick={() => openForm(activity.id)}
+                        />
                         <Button content="Delete" secondary />
                     </Card.Content>
                 </Card>
