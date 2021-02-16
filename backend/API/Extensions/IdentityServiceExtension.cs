@@ -1,6 +1,9 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Models;
 using Persistance;
 
@@ -17,7 +20,18 @@ namespace API.Extensions
             .AddEntityFrameworkStores<DataContext>()
             .AddSignInManager<SignInManager<AppUser>>();
 
-            service.AddAuthentication();
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("This must be a secret key"));
+
+            service.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => 
+            {
+                opt.TokenValidationParameters = new TokenValidationParameters 
+                {
+                    ValidateIssuerSigningKey = true, 
+                    IssuerSigningKey = key, 
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
             return service;
         } 

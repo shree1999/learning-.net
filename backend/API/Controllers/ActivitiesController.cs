@@ -9,7 +9,7 @@ namespace API.Controllers
 {
     public class ActivitiesController : Base
     {
-        
+
         [HttpGet]
         public async Task<ActionResult<List<Activity>>> GetAllActivities()
         {
