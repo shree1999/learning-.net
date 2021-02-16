@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Extensions;
+using API.Services;
 using Application.ActivityHandler;
 using Application.Core;
 using MediatR;
@@ -44,6 +45,7 @@ namespace API
             services.AddMediatR(typeof(ListActivities.Handler).Assembly);
             services.AddAutoMapper(typeof(Mapper).Assembly);
             services.AddIdentityService(_configuration);
+            services.AddScoped<TokenService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
